@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="jpush-phonegap-plugin"
-  version="3.7.3">
+  version="3.7.6">
 
     <name>JPush</name>
     <description>JPush for cordova plugin</description>
@@ -49,7 +49,7 @@
         <source-file src="src/ios/Plugins/AppDelegate+JPush.m" />
 
         <header-file src="src/ios/lib/JPUSHService.h" />
-        <source-file src="src/ios/lib/jpush-ios-3.2.6.a" framework="true" />
+        <source-file src="src/ios/lib/jpush-ios-3.3.3.a" framework="true" />
         <resource-file src="src/ios/JPushConfig.plist" />
 
         <framework src="CFNetwork.framework" weak="true" />
@@ -94,6 +94,11 @@
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 
+
+          
+			
+			    <!--华为角标-->
+			<uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE "/>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
@@ -185,6 +190,9 @@
 
             <!-- Required SDK核心功能-->
             <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+			
+			 <!-- 3.5.0新增，用于定时展示功能 -->
+			<receiver android:name="cn.jpush.android.service.SchedulerReceiver" android:exported="false"/>
 
             <!--since 3.3.0 接收JPush相关事件-->
             <receiver android:name="cn.jiguang.cordova.push.JPushEventReceiver">
@@ -238,7 +246,7 @@
 
         </config-file>
 
-        <lib-file src="src/android/libs/jpush-android-3.3.9-google_play.jar" />
+        <lib-file src="src/android/libs/jpush-android-4.0.0-google_play.jar" />
 
         <source-file src="src/android/PushService.java" target-dir="src/cn/jiguang/cordova/push" />
         <source-file src="src/android/JPushPlugin.java" target-dir="src/cn/jiguang/cordova/push" />
@@ -261,6 +269,8 @@
           target="res/layout/jpush_webview_layout.xml" />
         <resource-file src="src/android/res/layout/push_notification.xml"
           target="res/layout/push_notification.xml" />
+        <resource-file src="src/android/res/layout-v21/push_notification.xml"
+          target="res/layout-v21/push_notification.xml" />
 
         <resource-file src="src/android/res/values/jpush_style.xml"
                        target="res/values/jpush_style.xml" />
